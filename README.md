@@ -9,7 +9,7 @@ Will check for updated versions of LSGM and game files at at every start.
 docker build -t taxx/sandstorm-lgsm .
 
 # run
-docker run -p 27015:27015/udp -p 27017:27017/udp -e SERVERPORT=27015 -e QUERYPORT=27017 --name sandstorm taxx/ark-server
+docker run -p 27015:27015/udp -p 27017:27017/udp -e SERVERPORT=27015 -e QUERYPORT=27017 --name sandstorm taxx/sandstorm-lgsm
 
 # push image
 docker push taxx/sandstorm-lgsm
