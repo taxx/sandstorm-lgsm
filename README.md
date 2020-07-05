@@ -16,18 +16,15 @@ docker push taxx/sandstorm-lgsm
 ```
 
 ## Volume redirection
+Redirect whole folder to get persitance on game files + config files.
+Docker folder: /sandstorm  : Contains all config files and game binaries
 
-### Interesting files to redirect
-/lgsm/config-lgsm/inssserver/inssserver.cfg
-
-### Folders
-/sandstorm/serverfiles/Insurgency/Config/Server
-(Files in this folder includes (for example): Admins.txt, Bans.json, MapCycle.txt))
-
+## Other files of interest
+/sandstorm/lgsm/config-lgsm/inssserver/inssserver.cfg
+/sandstorm/serverfiles/Insurgency/Config/Server/
+   Admins.txt, Bans.json, MapCycle.txt
 /sandstorm/serverfiles/Insurgency/Saved/Config/LinuxServer/
-(Game.ini, GameUserSettings.ini)
-
-_(Redirect entire folders)_
+   Game.ini, GameUserSettings.ini
 
 ## Running live
 See docker-compose.yml for Docker Compose sample:
@@ -35,9 +32,6 @@ See docker-compose.yml for Docker Compose sample:
 Docker:
 ```bash
 docker run -p 27015:27015/udp -p 27017:27017/udp -e SERVERPORT=27015 -e QUERYPORT=27017 \
-       -v /my/path/to/sandstorm/insserver.cfg:/lgsm/config-lgsm/inssserver/inssserver.cfg
-       -v /my/path/to/sandstorm:/sandstorm/serverfiles/Insurgency/Saved/Config/LinuxServer
-       -v /my/path/to/sandstorm:/sandstorm/serverfiles/Insurgency/Config/Server
+       -v /my/local/path/to/sandstorm/:/sandstorm
        --name sandstorm taxx/ark-server
 ```
-

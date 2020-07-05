@@ -11,9 +11,7 @@
             - SERVERPORT=27015
             - QUERYPORT=27017
         volumes:
-            - /my/path/to/sandstorm/insserver.cfg:/lgsm/config-lgsm/inssserver/inssserver.cfg
-            - /my/path/to/sandstorm/:/sandstorm/serverfiles/Insurgency/Saved/Config/LinuxServer
-            - /my/path/to/sandstorm/:/sandstorm/serverfiles/Insurgency/Config/Server
+            - /my/local/path/to/sandstorm/:/sandstorm
         ports:
         - 27015:27015/udp # Steam port
         - 27017:27017/udp # Query port
