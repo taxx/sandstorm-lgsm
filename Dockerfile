@@ -31,6 +31,9 @@ RUN adduser \
 COPY run.sh /home/sandstorm/run.sh
 COPY user.sh /home/sandstorm/user.sh
 
+# Set executable flags
+RUN chmod +x /home/sandstorm/*.sh
+
 # Switch from windows to linux file line endings
 RUN sed -i -e 's/\r$//' /home/sandstorm/*.sh
 
