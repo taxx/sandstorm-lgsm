@@ -1,0 +1,17 @@
+# sample file
+    version: '2'
+    services:
+        ark:
+        container_name: sandstorm
+        image: taxx/sandstorm-lgsm
+        environment:
+            - TZ=Europe/Paris
+            - GID=1000
+            - UID=1000
+            - SERVERPORT=27015
+            - QUERYPORT=27017
+        volumes:
+            - /my/path/to/ark:/ark
+        ports:
+        - 27015:27015/udp # Steam port
+        - 27017:27017/udp # Query port
