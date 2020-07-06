@@ -5,7 +5,7 @@ Will check for updated versions of LSGM and game files at at every start.
 ### Some notes on networking
 UDP ports are all that are used for game and query ports.  
 It needs to be consistent all the way from docker container, config file (inssserver.cfg) to firewall openings/port forwards.  
-_All samples are without RCON exposed externally._
+_All samples are without RCON exposed externally (RCON default port = 29099 TCP)._
 
 ## Volume redirection
 Redirect whole folder to get persitance on game files + config files.  
@@ -30,11 +30,17 @@ See docker-compose.yml for Docker Compose sample:
 
 Docker:
 ```bash
+
+# Basic startup
 docker run -p 27103:27103/udp -p 27132:27132/udp \
-      -e SERVERPORT=27103 \
-      -e QUERYPORT=27132 \
       -v /my/local/path/to/sandstorm/:/sandstorm \
       --name sandstorm taxx/ark-server \
+
+# Start with external RCON (set port and password and enable state in Game.ini under Rcon)
+docker run -p 27103:27103/udp -p 27132:27132/udp -p 29099:29099/tcp \
+      -v /my/local/path/to/sandstorm/:/sandstorm \
+      --name sandstorm taxx/ark-server \
+
 ```
 
 ## Development / testing
