@@ -1,17 +1,16 @@
-# sample file
-    version: '2'
-    services:
-        ark:
-        container_name: sandstorm
-        image: taxx/sandstorm-lgsm
-        environment:
-            - TZ=Europe/Paris
-            - GID=1000
-            - UID=1000
-            - SERVERPORT=27015
-            - QUERYPORT=27017
-        volumes:
-            - /my/local/path/to/sandstorm/:/sandstorm
-        ports:
-        - 27015:27015/udp # Steam port
-        - 27017:27017/udp # Query port
+# Sample docker compose file
+version: '2'
+services:
+  sandstorm:
+    container_name: sandstorm
+    image: taxx/sandstorm-lgsm
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Paris
+      - GID=1001
+      - UID=1001
+    volumes:
+      - /my/local/path/to/sandstorm/:/sandstorm # Server files and config files
+    ports:
+      - 27103:27103/udp # Server port
+      - 27132:27132/udp # Query port
