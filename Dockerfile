@@ -18,7 +18,8 @@ RUN apt update && \
     apt install -y mailutils postfix curl wget file tar \
 	bzip2 gzip unzip bsdmainutils python util-linux \
 	ca-certificates binutils bc jq tmux netcat lib32gcc1 \
-	lib32stdc++6 cron iproute2 procps
+	lib32stdc++6 cron iproute2 procps \
+	libsdl2-2.0-0:i386
 
 # Run commands as the steam user
 RUN adduser \ 
