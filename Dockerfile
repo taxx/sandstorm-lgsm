@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bookworm-slim
 
 LABEL maintainer taxx
 
@@ -13,13 +13,16 @@ ENV UID 1000
 ENV GID 1000
 
 # Install dependencies 
-RUN dpkg --add-architecture i386
-RUN apt update && \ 
+RUN dpkg --add-architecture i386 && \
+    apt update && \ 
     apt install -y mailutils postfix curl wget file tar \
-	bzip2 gzip unzip bsdmainutils python util-linux \
-	ca-certificates binutils bc jq tmux netcat lib32gcc1 \
-	lib32stdc++6 cron iproute2 procps \
-	libsdl2-2.0-0:i386
+	bzip2 gzip unzip bsdmainutils python3 util-linux \
+	ca-certificates binutils bc jq tmux \
+	cron iproute2 procps \
+	netcat-openbsd uuid-runtime \
+	xz-utils distro-info \
+	lib32gcc-s1 lib32stdc++6 libsdl2-2.0-0:i386 \
+	netcat-openbsd uuid-runtime xz-utils
 
 # Run commands as the steam user
 RUN adduser \ 
